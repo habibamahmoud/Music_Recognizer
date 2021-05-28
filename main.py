@@ -17,6 +17,8 @@ from tempfile import mktemp
 import librosa.display
 import numpy as np
 from PIL import Image
+import matplotlib.pyplot as plt
+import imagehash
 
 import pylab
 
@@ -79,6 +81,7 @@ class MainApp(QMainWindow,MAIN_WINDOW):
 
     def spectrogram (self):
         
+        
         Spectro_Path = 'mixSpectrogram.png'
         pylab.axis('off')  # no axis
         pylab.axes([0., 0., 1., 1.], frameon=False, xticks=[], yticks=[])  # Remove the white edge
@@ -90,20 +93,31 @@ class MainApp(QMainWindow,MAIN_WINDOW):
 
     def features (self): 
       
-      #spectral centroid 
+      #mfcc 
       pylab.axis('off')  
       pylab.axes([0., 0., 1., 1.], frameon=False, xticks=[], yticks=[])
-      SavePath = 'feature_centroid.png'
-      feature1= librosa.feature.spectral_centroid(y=self.outMix, sr=self.samplingFrequency1)
+      SavePath = 'mfcc.png'
+      feature1= librosa.feature.mfcc(y=self.outMix, sr=self.samplingFrequency1)
+      Image1=Image.fromarray(feature1)
+      Hash1=imagehash.phash(Image1)
+      f = open('hash1.txt','a')
+      f.write(str(Hash1)+"\n")
+      f.close()
       librosa.display.specshow(feature1.T,sr=self.samplingFrequency1 )
       pylab.savefig(SavePath, bbox_inches=None, pad_inches=0)
       pylab.close()
 
-      #spectral_RollOff
+      #melspectrogram
       pylab.axis('off') 
       pylab.axes([0., 0., 1., 1.], frameon=False, xticks=[], yticks=[]) 
-      SavePath ='feature_rolloff.png'
-      feature2= librosa.feature.spectral_rolloff(y=self.outMix, sr=self.samplingFrequency1)
+      SavePath ='melspectrogram.png'
+      feature2= librosa.feature.melspectrogram(y=self.outMix, sr=self.samplingFrequency1)
+      Image2=Image.fromarray(feature2)
+      Hash2=imagehash.phash(Image2)
+      f = open('hash2.txt','a')
+      f.write(str(Hash2)+"\n")
+      f.close()
+      print(Hash2)
       librosa.display.specshow(feature2.T,sr=self.samplingFrequency1 )
       pylab.savefig(SavePath, bbox_inches=None, pad_inches=0)
       pylab.close()
@@ -113,6 +127,11 @@ class MainApp(QMainWindow,MAIN_WINDOW):
       pylab.axes([0., 0., 1., 1.], frameon=False, xticks=[], yticks=[]) 
       SavePath ='feature_zero_crossing_rate.png'
       feature3= librosa.feature.zero_crossing_rate(y=self.outMix)
+      Image3=Image.fromarray(feature3)
+      Hash3=imagehash.phash(Image3)
+      f = open('hash3.txt','a')
+      f.write(str(Hash3)+"\n")
+      f.close()
       librosa.display.specshow(feature3.T,sr=self.samplingFrequency1 )
       pylab.savefig(SavePath, bbox_inches=None, pad_inches=0)
       pylab.close()
