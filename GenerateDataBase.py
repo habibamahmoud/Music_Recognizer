@@ -1,6 +1,7 @@
 import json
 import os
 from tempfile import mktemp
+from xml.etree.ElementTree import dump
 from librosa.feature.spectral import chroma_stft
 import matplotlib.pyplot as plt
 import scipy as sp
@@ -19,17 +20,31 @@ def spectrogram(audioData ,samplingFreq,filename ):
     savepath= resultDirectory+'\\' + filename + '.png'
     plt.savefig( savepath)
 
-def mffcc_feature(audioData ,samplingFreq):
+def mffcc_feature(audioData ,samplingFreq,filename):
     mfcc =librosa.feature.mfcc(audioData.astype('float64'), sr=samplingFreq)
     mfcc2= Image.fromarray(mfcc)
     mfccHash = imagehash.phash(mfcc2)
-    print(mfccHash)
+    mfccHash = str(mfccHash)
+    return mfccHash
+
 
 def mel_specgram_Feature(audioData , samplingFreq):
     mel_spectrogram=librosa.feature.melspectrogram(audioData.astype('float64') , sr=samplingFreq)
     mel_spectrogram2=Image.fromarray(mel_spectrogram)
     mel_spectrogramHash= imagehash.phash(mel_spectrogram2)
-    print(mel_spectrogramHash)
+    mel_spectrogramHash=str(mel_spectrogramHash)
+    return mel_spectrogramHash
+    
+def generateHashed(filename,mfccHash,melSpecgram):
+    songHash ={
+        'name' : filename,
+        'mfcc': mfccHash,
+        'mel_spec': melSpecgram
+        
+    }
+    with open('DataBase.json','a') as jsonFile:
+        json.dump(songHash ,jsonFile)
+        jsonFile.write(os.linesep)
 
 for filename in os.listdir(directory):
     path= directory + '\\' +filename
@@ -38,9 +53,11 @@ for filename in os.listdir(directory):
     wname = mktemp('.wav')
     mp3Audio.export(wname,format="wav", parameters=[ "-ac", "1"])
     samplingFreq , audioData = wavfile.read(wname)
-    spectrogram(audioData,samplingFreq,filename)
-    #mffcc_feature(audioData,samplingFreq)
-    #mel_specgram_Feature(audioData , samplingFreq)
+    #spectrogram(audioData,samplingFreq,filename)
+    mfccHash= mffcc_feature(audioData,samplingFreq ,filename)
+    melSpecgram= mel_specgram_Feature(audioData , samplingFreq)
+    generateHashed(filename,mfccHash,melSpecgram)
+
 
     
     
