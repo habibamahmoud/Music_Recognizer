@@ -23,19 +23,24 @@ def spectrogram(audioData ,samplingFreq,filename ):
 def mffcc_feature(audioData ,samplingFreq,filename):
     mfcc =librosa.feature.mfcc(audioData.astype('float64'), sr=samplingFreq)
     mfcc2= Image.fromarray(mfcc)
-    mfccHash = imagehash.phash(mfcc2)
-    mfccHash = str(mfccHash)
-    return mfccHash
+    #mfccHash = imagehash.phash(mfcc2)
+    #mfccHash = str(mfccHash)
+    return mfcc2
 
 
 def mel_specgram_Feature(audioData , samplingFreq):
     mel_spectrogram=librosa.feature.melspectrogram(audioData.astype('float64') , sr=samplingFreq)
     mel_spectrogram2=Image.fromarray(mel_spectrogram)
-    mel_spectrogramHash= imagehash.phash(mel_spectrogram2)
-    mel_spectrogramHash=str(mel_spectrogramHash)
-    return mel_spectrogramHash
-    
-def generateHashed(filename,mfccHash,melSpecgram):
+    #mel_spectrogramHash= imagehash.phash(mel_spectrogram2)
+    #mel_spectrogramHash=str(mel_spectrogramHash)
+    return mel_spectrogram2
+
+def generateHash(feature):
+    featureHash= imagehash.phash(feature)
+    featureHash= str(featureHash)
+    return featureHash
+
+def saveHashed(filename,mfccHash,melSpecgram):
     songHash ={
         'name' : filename,
         'mfcc': mfccHash,
@@ -54,9 +59,12 @@ for filename in os.listdir(directory):
     mp3Audio.export(wname,format="wav", parameters=[ "-ac", "1"])
     samplingFreq , audioData = wavfile.read(wname)
     #spectrogram(audioData,samplingFreq,filename)
-    mfccHash= mffcc_feature(audioData,samplingFreq ,filename)
+    mfcc= mffcc_feature(audioData,samplingFreq ,filename)
     melSpecgram= mel_specgram_Feature(audioData , samplingFreq)
-    generateHashed(filename,mfccHash,melSpecgram)
+    mfccHash=generateHash(mfcc)
+    melSpecgramHash = generateHash(melSpecgram)
+    saveHashed(filename,mfccHash,melSpecgramHash)
+print('finish')
 
 
     
