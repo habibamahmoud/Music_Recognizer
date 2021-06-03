@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Group09_song1l_vocals.mp3",
+    "mfcc": "dba5dba5dbe5daa5c16dc3ed056e5d6a5c3a5c1a7c1a7c12341a2c1a24582659",
+    "melspec": "a7cba7c9e685d495d49554ad72ad7aad382e3d7a0d7a0d7a097a097009721974"
+  },
+  {
+    "name": "Group09_song1_full.mp3",
+    "mfcc": "b4d590b5c9b5c9b5c977c96ddb6d4f6a4d2a560a768a368a360a369a265a264a",
+    "melspec": "a6cba6cba691b691b691b69db6ad32ad364a354a355a355835783170397039f4"
+  },
+  {
+    "name": "Group09_song1_music.mp3",
+    "mfcc": "a55a8d30ed16fd32d994c1b0dc954ab24ab502ed32cd3649364b36eb12eb13eb",
+    "melspec": "a6d9b6d9b6d9b6d9b6d1b6c1b6c1b6c1b6c1b6c1b6c1b649b449b401b411b411"
+  },
+  {
+    "name": "Group09_song2_full.mp3",
+    "mfcc": "e7e0e060ea66c0268266b02e303e32dd32d530993c991dd90ddb0fdf0f9f0fb7",
+    "melspec": "8b068b06cb22cb20cea1c6a1e688f688f688f6c5f6c4f6a4f6acf6acf4a8fce0"
+  },
+  {
+    "name": "Group09_song2_music.mp3",
+    "mfcc": "8781870994ac920d926d9a21843939e279ca69ae78567ad67ad56ad76dd74733",
+    "melspec": "f624f604f600f600d600d700cf00cf81cf81cf85cf85cfa5cfa5cfa5cfa5cfa5"
+  },
+  {
+    "name": "Group09_song2_vocals.mp3",
+    "mfcc": "8067c4a38e4786228a76c57e761d715d7791719d7199759979987998789c788c",
+    "melspec": "8b078b078b27cba1caa164b974f874d874d8345c34ec34ee34ee34ee34ea746a"
+  },
+  {
+    "name": "Group09_song3_full.mp3",
+    "mfcc": "f1cfffc7fbc7e1aabc23f0f370f3707370f31672047804180e1c0e3c0a1c0f1c",
+    "melspec": "9c739c739ce99ded9dcd98c39ac35ac33ad332d33253701e705c605861586359"
+  },
+  {
+    "name": "Group09_song3_music.mp3",
+    "mfcc": "9e55bfc3bec3f0c3fcc7f0e3f9e378e371ea3412093804380f18473c431c471c",
+    "melspec": "b8e3b8e39ae39ee39ee39ac39ad19ed19ed09e54887c883c887c887c807c817c"
+  },
+  {
+    "name": "Group09_song3_vocals.mp3",
+    "mfcc": "88189d18993c9d189937a0f07477766666d366c766e766c562c56acd7a8d780d",
+    "melspec": "8e308c308c3c8d2ccd0c49cc71cb72cb72c372d373d373d371d3715973597349"
+  },
+  {
+    "name": "Group09_song4l_music.mp3",
+    "mfcc": "9800ab00e700e306e694e20cd15c54d459fe19e657ab54bb1d710df56ffb5a7b",
+    "melspec": "9886988698c69cc69cc698ce98ce98cf98cf9cce9cce98de99ce99c699c69962"
+  },
+  {
+    "name": "Group09_song4_full.mp3",
+    "mfcc": "99ca9984f108d088802a900b801a44b20cbd2ed52f553fd52ff51ef76ef76eff",
+    "melspec": "90009000918699ce9ece3cce3bea1beb1f7316731cf33ceb1cc91ce93dc939cb"
+  },
+  {
+    "name": "Group09_song4_vocals.mp3",
+    "mfcc": "802ad08d910ac089802bd1abb93a2d732eb526553ed43f442ff42ff53ef46ef6",
+    "melspec": "80109110d18c53ce7bce7fee7bea7b62077306312e316c616c296cb96cd92ddb"
+  }
+]
